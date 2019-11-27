@@ -1,0 +1,57 @@
+@startuml
+class Questionnaire {
+   HTML _welcome
+   Question[] _questions
+   HTML _thankYou
+   
+   constructor(HTML welcome,Question[] questions,HTML thankYou)
+   linkQuestions()
+   createElement()
+   get questions()
+   getQuestionById(id)
+   submitResults()
+}
+
+class Question(){
+   text _id
+   text _text
+   text _skipType
+   boolean _multipleChoice
+   Answer _selectedAnswer
+   Answer[] _answers
+   Question _previousQuestion
+   Question_nextQuestion
+
+   constructor(id,text,skipType,multipleChoice,answers)
+   set answers(Answer[] answers)
+   set previous(Question previous)
+   get previous()
+   set next(Question next)
+   get next()
+   get selectedAnswer()
+   addSelectedAnswer(Answer answer)
+   removeSelectedAnswer(Answer answer)
+   isSelected()
+   selectId(text answerId)
+   createElement()
+   createTextElement(answer)
+   createAnswerElement(answer)
+   buildNavigationButton(nextQuestion,skipType)
+   addSubmitButton(questionElement)
+   addNavigationButtons(questionElement)   
+}
+
+class Answer(){
+   text _id
+   text _text
+   text _value
+   text _skipToQuestionId
+   boolean _noneOfAbove
+   
+   constructor(text id,text text,text value,text skipToQuestionId,boolean noneOfAbove)
+   get noneOfAbove
+   get skipToId
+   get text
+   get id
+}
+@enduml
